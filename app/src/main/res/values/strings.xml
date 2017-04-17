@@ -17,4 +17,11 @@
     <string name="episodes">Episodes</string>
     <string name="year">Year</string>
     <string name="all_types">All Types</string>
+    <string name="title_activity_movie_details">MovieDetailsActivity</string>
+    <string name="website_link">Website link</string>
+    <string name="share_with_friends">Share with friends</string>
+    <string name="runtime_text">%1$s | %2$s</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="actors">Actors</string>
+    <string name="share_app_message">Hey there! I found %1$s on OMDB check it out %2$s</string>
 </resources>

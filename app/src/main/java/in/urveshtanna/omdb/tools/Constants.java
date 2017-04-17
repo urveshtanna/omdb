@@ -17,4 +17,5 @@ public class Constants {
     public static final String COMMON_ERROR_MSG = "Something went wrong! Please try again.";
 
     public static final String BASE_URL = "http://www.omdbapi.com";
+    public static final String DEFAULT_PLOT = "full";
 }

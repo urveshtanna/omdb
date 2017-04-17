@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import in.urveshtanna.omdb.R;
 
 /**
- *
  * @author urveshtanna
  * @version 1.0
  * @see in.urveshtanna.omdb.adapters.HomePageAdapter
@@ -67,6 +66,9 @@ public class CustomChromeTab extends AppCompatActivity {
 
         mCustomTabsIntent = new CustomTabsIntent.Builder(mCustomTabsSession)
                 .setShowTitle(false)
+                .setSecondaryToolbarColor(ContextCompat.getColor(this, R.color.icons))
+                .setStartAnimations(this, R.anim.slide_from_right, R.anim.exit_to_left)
+                .setExitAnimations(this, R.anim.slide_from_left, R.anim.exit_to_right)
                 .setToolbarColor(ContextCompat.getColor(this, R.color.colorPrimary))
                 .build();
     }

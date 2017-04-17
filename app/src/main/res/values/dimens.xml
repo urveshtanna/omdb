@@ -20,4 +20,5 @@
     <dimen name="spacing_x_small">6dp</dimen>
     <dimen name="spacing_extra_small">4dp</dimen>
     <dimen name="spacing_extra_extra_small">2dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

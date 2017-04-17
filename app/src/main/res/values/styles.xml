@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@color/background_window</item>
         <item name="android:textColorPrimary">@color/primary_text</item>
         <item name="android:textColorPrimaryInverse">@color/icons</item>

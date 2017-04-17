@@ -13,4 +13,6 @@ public class JsonKeys {
     public static final String QUERY_TYPE_OF_RESULT = "type";
     public static final String QUERY_YEAR_OF_RELEASE = "y";
     public static final String QUERY_PAGE = "page";
+    public static final String QUERY_TITLE = "t";
+    public static final String QUERY_PLOT = "plot";
 }
