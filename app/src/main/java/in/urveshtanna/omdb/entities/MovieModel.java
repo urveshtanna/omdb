@@ -22,6 +22,9 @@ public class MovieModel {
     @SerializedName("Rated")
     private String rated;
 
+    @SerializedName("Error")
+    private String error;
+
     @SerializedName("Released")
     private String released;
 
@@ -294,5 +297,14 @@ public class MovieModel {
 
     public void setResponse(String response) {
         this.response = response;
+    }
+
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

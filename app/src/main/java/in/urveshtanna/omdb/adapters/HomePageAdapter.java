@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
+import android.os.Build;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.urveshtanna.omdb.R;
+import in.urveshtanna.omdb.activity.HomePageActivity;
 import in.urveshtanna.omdb.activity.MovieDetailsActivity;
 import in.urveshtanna.omdb.databinding.ItemFooterViewBinding;
 import in.urveshtanna.omdb.databinding.ItemSearchCardBinding;
@@ -84,7 +87,7 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private void bindItem(RecyclerView.ViewHolder viewHolder) {
-        MovielHolder holder = (MovielHolder) viewHolder;
+        final MovielHolder holder = (MovielHolder) viewHolder;
         final MovieModel movieModel = movieModelList.get(holder.getAdapterPosition() - 1);
         holder.itemSearchCardBinding.setModel(movieModel);
 
@@ -98,7 +101,16 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.itemSearchCardBinding.btnShowDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, MovieDetailsActivity.class).putExtra("title", movieModel.getTitle()));
+                Intent intent = new Intent(mContext, MovieDetailsActivity.class);
+                intent.putExtra("title", movieModel.getTitle());
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((HomePageActivity) mContext, holder.itemSearchCardBinding.imgPoster, mContext.getString(R.string.img_poster_transition));
+                    mContext.startActivity(intent, options.toBundle());
+                } else {
+                    mContext.startActivity(intent);
+                }
+
+
             }
         });
 

@@ -138,6 +138,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
         binding.progressBar.setVisibility(View.GONE);
         binding.appBar.setVisibility(View.GONE);
         binding.include.content.setVisibility(View.GONE);
+        HelperClass.showToastBar(mContext, movieModel.getError());
     }
 
     public void setMovieModel(MovieModel movieModel) {
