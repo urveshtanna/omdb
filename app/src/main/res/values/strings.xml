@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">OMDB</string>
+    <string name="search">Search</string>
+    <string name="search_illus">search_illus</string>
+    <string name="search_for_a_movie_or_tv_series">Search for a movie or TV series</string>
+    <string name="internet_connection_error_message">Please Check Your Internet Connection</string>
+    <string name="error_message_something_went_wrong_retry">Something went wrong please retry</string>
+    <string name="something_went_wrong_message">Something went wrong</string>
+    <string name="something_went_wrong_contact_us">Something went wrong please contact us for support</string>
+    <string name="poster">poster</string>
+    <string name="show_details">Show Details</string>
+    <string name="show_on_imdb">Show on IMDB</string>
+    <string name="swipe_up_to_filter">Swipe up to Filter</string>
+    <string name="type_of_result">Type of result</string>
+    <string name="movies">Movies</string>
+    <string name="series">Series</string>
+    <string name="episodes">Episodes</string>
+    <string name="year">Year</string>
+    <string name="all_types">All Types</string>
+</resources>

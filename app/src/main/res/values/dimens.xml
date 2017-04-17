@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- font sizes -->
+    <dimen name="font_xx_large">24sp</dimen>
+    <dimen name="font_x_large">22sp</dimen>
+    <dimen name="font_normal">18sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_small">14sp</dimen>
+    <dimen name="font_x_small">12sp</dimen>
+    <dimen name="font_xx_small">10sp</dimen>
+
+    <!-- spacing -->
+    <dimen name="spacing_xx_large">32dp</dimen>
+    <dimen name="spacing_x_large">24dp</dimen>
+    <dimen name="spacing_x_normal">18dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
+    <dimen name="spacing_mid_size">14dp</dimen>
+    <dimen name="spacing_medium">12dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_x_small">6dp</dimen>
+    <dimen name="spacing_extra_small">4dp</dimen>
+    <dimen name="spacing_extra_extra_small">2dp</dimen>
+</resources>

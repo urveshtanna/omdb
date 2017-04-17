@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="in.urveshtanna.omdb.entities.MovieModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_x_small"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:layout_marginRight="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_x_small"
+            app:cardBackgroundColor="@color/icons"
+            app:cardCornerRadius="@dimen/spacing_extra_extra_small"
+            app:cardElevation="@dimen/spacing_extra_extra_small">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingLeft="@dimen/spacing_small"
+                android:paddingRight="@dimen/spacing_small"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_small">
+
+
+                <ImageView
+                    android:id="@+id/img_poster"
+                    android:layout_width="100dp"
+                    android:layout_marginRight="@dimen/spacing_small"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:layout_height="120dp"
+                    android:contentDescription="@string/poster"
+                    app:imageUrl="@{model.poster}" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/img_poster"
+                    android:text="@{model.title}"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/font_normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_title"
+                    android:layout_marginTop="2dp"
+                    android:layout_toRightOf="@+id/img_poster"
+                    android:text="@{model.year}"
+                    android:id="@+id/tv_year"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/font_x_small" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_year"
+                    android:textColor="@color/icons"
+                    android:id="@+id/tv_type_of_result"
+                    android:text="@{model.type}"
+                    android:textAllCaps="true"
+                    android:fontFamily="sans-serif"
+                    android:textSize="@dimen/font_x_small"
+                    android:background="@drawable/background_result_type"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_toRightOf="@+id/img_poster"/>
+
+                <Button
+                    android:id="@+id/btn_show_details"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/img_poster"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="@string/show_details"
+                    android:clickable="true"
+                    android:textAllCaps="true"
+                    android:textColor="@color/secondary_text" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_poster"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_toLeftOf="@+id/btn_show_details"
+                    android:text="@string/show_on_imdb"
+                    android:clickable="true"
+                    android:id="@+id/btn_imdb"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+</layout>
