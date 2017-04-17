@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 
 import com.squareup.otto.Bus;
 
+import in.urveshtanna.omdb.entities.MovieModel;
 import in.urveshtanna.omdb.entities.RequestUrl;
 import in.urveshtanna.omdb.entities.SearchPayloadModel;
 import in.urveshtanna.omdb.tools.Constants;
@@ -17,7 +18,6 @@ import retrofit2.http.Query;
 
 
 /**
- *
  * Contains all the rest requires for movie search
  *
  * @author urveshtanna
@@ -29,6 +29,8 @@ import retrofit2.http.Query;
 public class MovieSearchRestCall extends RestCall {
 
     private static final String GET_SEARCHED_MOVIES = "get_searched_movies";
+    private static final String GET_MOVIE_FROM_TITLE = "get_movie_from_title";
+
     private PublicService apiService;
     private Bus mBus;
 
@@ -58,16 +60,36 @@ public class MovieSearchRestCall extends RestCall {
         });
     }
 
+    public void getMoviesWithTitle(@NonNull String title, String plot) {
+        Call<MovieModel> call = apiService.getMovieFromName(title, plot);
+        call.enqueue(new Callback<MovieModel>() {
+            @Override
+            public void onResponse(Call<MovieModel> call, Response<MovieModel> response) {
+                MovieModel responseModel = response.body();
+                if (responseModel != null) {
+                    mBus.post(responseModel);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieModel> call, Throwable t) {
+                onError(t, GET_MOVIE_FROM_TITLE, mBus);
+            }
+        });
+    }
+
 
     private interface PublicService {
 
         @GET("/")
-        Call<SearchPayloadModel> getList(
-                @Query(JsonKeys.QUERY_TO_SEARCH) String searchKey,
-                @Query(JsonKeys.QUERY_TYPE_OF_RESULT) String type,
-                @Query(JsonKeys.QUERY_YEAR_OF_RELEASE) String yearOfRelease,
-                @Query(JsonKeys.QUERY_PAGE) int page);
+        Call<SearchPayloadModel> getList(@Query(JsonKeys.QUERY_TO_SEARCH) String searchKey,
+                                         @Query(JsonKeys.QUERY_TYPE_OF_RESULT) String type,
+                                         @Query(JsonKeys.QUERY_YEAR_OF_RELEASE) String yearOfRelease,
+                                         @Query(JsonKeys.QUERY_PAGE) int page);
 
+        @GET("/")
+        Call<MovieModel> getMovieFromName(@Query(JsonKeys.QUERY_TITLE) String title,
+                                          @Query(JsonKeys.QUERY_PLOT) String plot);
 
     }
 }
