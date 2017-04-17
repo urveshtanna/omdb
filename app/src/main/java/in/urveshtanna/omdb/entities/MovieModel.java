@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import in.urveshtanna.omdb.R;
 
 public class MovieModel {
@@ -52,6 +55,9 @@ public class MovieModel {
     @SerializedName("Poster")
     private String poster;
 
+    @SerializedName("Ratings")
+    private List<Ratings> ratings = new ArrayList<>();
+
     @SerializedName("Metascore")
     private String metascore;
 
@@ -67,11 +73,28 @@ public class MovieModel {
     @SerializedName("Type")
     private String type;
 
-    @SerializedName("totalSeasons")
-    private String totalseasons;
+    @SerializedName("DVD")
+    private String dvd;
+
+    @SerializedName("BoxOffice")
+    private String boxoffice;
+
+    @SerializedName("Production")
+    private String production;
+
+    @SerializedName("Website")
+    private String website;
 
     @SerializedName("Response")
     private String response;
+
+    @BindingAdapter({"bind:imageUrl"})
+    public static void loadImage(ImageView view, String imageUrl) {
+        Glide.with(view.getContext())
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_camera_roll_grey_300_36dp)
+                .into(view);
+    }
 
     public String getTitle() {
         return title;
@@ -185,6 +208,14 @@ public class MovieModel {
         this.poster = poster;
     }
 
+    public List<Ratings> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<Ratings> ratings) {
+        this.ratings = ratings;
+    }
+
     public String getMetascore() {
         return metascore;
     }
@@ -225,12 +256,36 @@ public class MovieModel {
         this.type = type;
     }
 
-    public String getTotalseasons() {
-        return totalseasons;
+    public String getDvd() {
+        return dvd;
     }
 
-    public void setTotalseasons(String totalseasons) {
-        this.totalseasons = totalseasons;
+    public void setDvd(String dvd) {
+        this.dvd = dvd;
+    }
+
+    public String getBoxoffice() {
+        return boxoffice;
+    }
+
+    public void setBoxoffice(String boxoffice) {
+        this.boxoffice = boxoffice;
+    }
+
+    public String getProduction() {
+        return production;
+    }
+
+    public void setProduction(String production) {
+        this.production = production;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public String getResponse() {
@@ -239,14 +294,5 @@ public class MovieModel {
 
     public void setResponse(String response) {
         this.response = response;
-    }
-
-
-    @BindingAdapter({"bind:imageUrl"})
-    public static void loadImage(ImageView view, String imageUrl) {
-        Glide.with(view.getContext())
-                .load(imageUrl)
-                .placeholder(R.drawable.ic_camera_roll_grey_300_36dp)
-                .into(view);
     }
 }
