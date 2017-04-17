@@ -27,7 +27,6 @@ import in.urveshtanna.omdb.tools.ViewUtils;
 import in.urveshtanna.omdb.view.HomePageView;
 
 /**
- *
  * Main launcher activity for the app showing list of search result
  *
  * @author urveshtanna
@@ -131,6 +130,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
                     binding.include.rdbAll.setChecked(true);
                     getMovies();
                     searchView.clearFocus();
+                    homePageAdapter.enableFooter(true);
                     return true;
                 }
 
@@ -247,6 +247,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
     public void setUpRecyclerAdapter() {
         homePageAdapter = new HomePageAdapter(searchList, mContext);
+        homePageAdapter.enableFooter(false);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(mContext);
         binding.include.childInclude.recyclerView.setLayoutManager(layoutManager);
         binding.include.childInclude.recyclerView.setAdapter(homePageAdapter);
