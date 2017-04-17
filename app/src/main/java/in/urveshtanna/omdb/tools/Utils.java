@@ -9,12 +9,11 @@ import in.urveshtanna.omdb.R;
 import in.urveshtanna.omdb.entities.ErrorModel;
 
 /**
- * Adapter used to search product with pricing and navigate to product details
+ * Useful/Helper methods
  *
  * @author urveshtanna
- * @version <Current-Version>
- * @see <Usage>
- * @since 1.2.0
+ * @version 1.0
+ * @since 1.0
  */
 
 public class Utils {

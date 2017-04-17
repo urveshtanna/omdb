@@ -1,11 +1,5 @@
 package in.urveshtanna.omdb.entities;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-
-import java.io.IOException;
-
 import retrofit2.Response;
 
 public class ErrorModel {
@@ -45,20 +39,6 @@ public class ErrorModel {
         this.statusCode = response.code();
         this.errorMessage = response.message();
         this.statusText = response.message();
-
-        try {
-            String errorBodyString = response.errorBody().string();
-            ResponseModel responseModel = new Gson().fromJson(new JsonParser().parse(errorBodyString), ResponseModel.class);
-            if (responseModel.getError() != null) {
-                this.errorMessage = responseModel.getError();
-            } else {
-                this.errorMessage = responseModel.getMetaData().getMessage();
-            }
-            this.errorType = responseModel.getErrorType();
-            this.statusText = responseModel.getMetaData().getMessage();
-        } catch (IOException | JsonSyntaxException | NullPointerException e) {
-            this.exception = e;
-        }
     }
 
     public ErrorModel(Response response, String tag) {

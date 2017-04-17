@@ -9,6 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+/**
+ * Helpler with genric methods for error message,toast,etc
+ *
+ * @author urveshtanna
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class HelperClass {
 
     private static String TAG = "HelperClass";

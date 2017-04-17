@@ -26,6 +26,15 @@ import in.urveshtanna.omdb.tools.HelperClass;
 import in.urveshtanna.omdb.tools.ViewUtils;
 import in.urveshtanna.omdb.view.HomePageView;
 
+/**
+ *
+ * Main launcher activity for the app showing list of search result
+ *
+ * @author urveshtanna
+ * @version 1.0
+ * @since 1.0
+ */
+
 public class HomePageActivity extends AppCompatActivity implements HomePageView {
 
     private SearchView searchView;

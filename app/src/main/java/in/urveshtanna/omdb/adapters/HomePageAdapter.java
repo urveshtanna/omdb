@@ -23,7 +23,7 @@ import in.urveshtanna.omdb.tools.CustomChromeTab;
 import in.urveshtanna.omdb.tools.Utils;
 
 /**
- * Adapter used to search product with pricing and navigate to product details
+ * Adapter used to show list of searched items
  *
  * @author urveshtanna
  * @version 1.0

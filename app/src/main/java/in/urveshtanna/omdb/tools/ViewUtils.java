@@ -6,6 +6,15 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.inputmethod.InputMethodManager;
 
+/**
+ * View related methods
+ *
+ * @author urveshtanna
+ * @version 1.0
+ * @since 1.0
+ */
+
+
 public class ViewUtils {
 
     private static String TAG = "ViewUtils";

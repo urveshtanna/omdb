@@ -11,9 +11,19 @@ import in.urveshtanna.omdb.rest.MovieSearchRestCall;
 import in.urveshtanna.omdb.tools.Utils;
 import in.urveshtanna.omdb.view.HomePageView;
 
+
+/**
+ *
+ *
+ * @author urveshtanna
+ * @version 1.0
+ * @see in.urveshtanna.omdb.activity.HomePageActivity
+ * @since 1.0
+ */
+
 public class HomePresenter extends Presenter<HomePageView> {
 
-    MovieSearchRestCall searchRestCall;
+    private MovieSearchRestCall searchRestCall;
     private String TAG = "HomePresenter";
 
     public HomePresenter(Context context, HomePageView view) {

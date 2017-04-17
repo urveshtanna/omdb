@@ -16,6 +16,16 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 
+/**
+ *
+ * Contains all the rest requires for movie search
+ *
+ * @author urveshtanna
+ * @version 1.0
+ * @see in.urveshtanna.omdb.presenter.HomePresenter
+ * @since 1.0
+ */
+
 public class MovieSearchRestCall extends RestCall {
 
     private static final String GET_SEARCHED_MOVIES = "get_searched_movies";

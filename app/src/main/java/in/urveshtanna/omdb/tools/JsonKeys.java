@@ -1,14 +1,12 @@
 package in.urveshtanna.omdb.tools;
 
 /**
- * Adapter used to search product with pricing and navigate to product details
+ * Key values for JSON parsing
  *
  * @author urveshtanna
- * @version <Current-Version>
- * @see <Usage>
- * @since 1.2.0
+ * @version 1.0
+ * @since 1.0
  */
-
 public class JsonKeys {
 
     public static final String QUERY_TO_SEARCH = "s";

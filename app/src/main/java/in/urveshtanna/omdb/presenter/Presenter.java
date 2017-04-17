@@ -11,6 +11,14 @@ import in.urveshtanna.omdb.tools.SettingsManager;
 import in.urveshtanna.omdb.tools.Utils;
 
 
+/**
+ * Base presenter
+ *
+ * @author urveshtanna
+ * @version 1.0
+ * @since 1.0
+ */
+
 public abstract class Presenter<T> {
 
     private Context mContext;
@@ -42,7 +50,7 @@ public abstract class Presenter<T> {
                 isRegister = false;
             }
         } catch (IllegalArgumentException e) {
-            //Logger.exception(getClass().getSimpleName(), e);
+            e.printStackTrace();
         }
     }
 

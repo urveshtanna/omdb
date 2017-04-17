@@ -15,9 +15,9 @@ import in.urveshtanna.omdb.R;
 /**
  *
  * @author urveshtanna
- * @version <Current-Version>
- * @see <Usage>
- * @since 1.2.0
+ * @version 1.0
+ * @see in.urveshtanna.omdb.adapters.HomePageAdapter
+ * @since 1.0
  */
 
 public class CustomChromeTab extends AppCompatActivity {
@@ -32,9 +32,7 @@ public class CustomChromeTab extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_custom_chrome_tab);
         setUpChromeTabs();
-        ;
         try {
             if (getIntent().getExtras().getString("url") != null) {
                 url = getIntent().getExtras().getString("url");

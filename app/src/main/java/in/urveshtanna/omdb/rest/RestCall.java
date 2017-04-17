@@ -16,6 +16,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
+/**
+ * Base Rest call class
+ *
+ * @author urveshtanna
+ * @version 1.0
+ * @since 1.0
+ */
+
 public abstract class RestCall {
 
     public static final int DEFAULT_ERROR_CODE = 999;
