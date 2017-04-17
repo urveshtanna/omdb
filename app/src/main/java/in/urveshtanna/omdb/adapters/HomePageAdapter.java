@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.urveshtanna.omdb.R;
+import in.urveshtanna.omdb.activity.MovieDetailsActivity;
 import in.urveshtanna.omdb.databinding.ItemFooterViewBinding;
 import in.urveshtanna.omdb.databinding.ItemSearchCardBinding;
 import in.urveshtanna.omdb.entities.MovieModel;
@@ -91,6 +92,13 @@ public class HomePageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void onClick(View v) {
                 mContext.startActivity(new Intent(mContext, CustomChromeTab.class).putExtra("url", "http://www.imdb.com/title/" + movieModel.getImdbid() + "/"));
+            }
+        });
+
+        holder.itemSearchCardBinding.btnShowDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, MovieDetailsActivity.class).putExtra("title", movieModel.getTitle()));
             }
         });
 

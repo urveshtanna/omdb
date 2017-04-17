@@ -114,7 +114,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home_page, menu);
+        getMenuInflater().inflate(R.menu.home_page_menu, menu);
         MenuItem menuSearch = menu.findItem(R.id.menu_search);
         searchView = (SearchView) menuSearch.getActionView();
         if (searchView != null) {
@@ -130,7 +130,6 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
                     binding.include.rdbAll.setChecked(true);
                     getMovies();
                     searchView.clearFocus();
-                    homePageAdapter.enableFooter(true);
                     return true;
                 }
 
@@ -299,6 +298,7 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
 
     private void getMovies() {
         homePresenter.searchForMovieWithName(queryToFind, getParameters(), binding.include.spYear.getSelectedItem().toString().equals("None") ? null : binding.include.spYear.getSelectedItem().toString(), startPage);
+        homePageAdapter.enableFooter(true);
     }
 
     @Override
