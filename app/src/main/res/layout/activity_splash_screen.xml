@@ -1,0 +1,35 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context="in.urveshtanna.omdb.activity.SplashScreen">
+
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/applogo"
+            android:src="@drawable/ic_camera_roll_white_48dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/icons"
+            android:text="@string/app_name"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:textSize="@dimen/font_x_large"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:layout_below="@+id/img_logo" />
+
+
+
+    </RelativeLayout>
+</layout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">@color/primary</color>
     <color name="colorPrimaryDark">@color/primary_dark</color>
     <color name="colorAccent">@color/accent</color>
@@ -12,7 +13,7 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
-    
+
     <color name="background_window">#f6f6f6</color>
     <color name="md_grey_100">#F5F5F5</color>
     <color name="md_grey_300">#E0E0E0</color>
@@ -26,5 +27,7 @@
     <color name="md_blue_grey_500">#607D8B</color>
     <color name="md_brown_500">#795548</color>
     <color name="md_indigo_500">#3F51B5</color>
+
+    <color name="black_overlay">#66000000</color>
 
 </resources>
