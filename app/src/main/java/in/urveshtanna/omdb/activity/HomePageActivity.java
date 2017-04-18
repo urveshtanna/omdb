@@ -336,6 +336,8 @@ public class HomePageActivity extends AppCompatActivity implements HomePageView 
         int size = 0;
         if (!isFirstTime) {
             size = homePageAdapter.getItemCount() - 2;
+        }else{
+            HelperClass.showToastBar(mContext,"Total "+searchPayloadModel.getPageCount()+" results found!");
         }
         if (size == Integer.parseInt(searchPayloadModel.getPageCount())) {
             mIsLastPage = true;

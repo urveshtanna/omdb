@@ -105,13 +105,21 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
     public boolean onCreateOptionsMenu(Menu menu) {
         if (isDataFetched) {
             getMenuInflater().inflate(R.menu.movie_details_menu, menu);
-            if (movieModel != null && movieModel.getWebsite() != null) {
+            if (movieModel != null && movieModel.getWebsite() != null && !movieModel.getWebsite().equals("N/A")) {
                 menu.findItem(R.id.action_website).setVisible(true);
             } else {
                 menu.findItem(R.id.action_website).setVisible(false);
             }
         }
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isDataFetched) {
+            hideLoadingView();
+        }
     }
 
     @Override
@@ -128,7 +136,7 @@ public class MovieDetailsActivity extends AppCompatActivity implements MovieDeta
                 e1.printStackTrace();
             }
         } else if (item.getItemId() == R.id.action_website) {
-            mContext.startActivity(new Intent(mContext, CustomChromeTab.class).putExtra("url", "http://www.imdb.com/title/" + movieModel.getImdbid() + "/"));
+            mContext.startActivity(new Intent(mContext, CustomChromeTab.class).putExtra("url", movieModel.getWebsite()));
         }
         return super.onOptionsItemSelected(item);
     }
