@@ -7,7 +7,7 @@ A simple android app that uses [OMDB api](http://www.omdbapi.com/) to search mov
 
 **[Download APK](https://goo.gl/vF4NY6)**
 
-*May the force be with you!*
+*May the force be with you! ;-)*
 
 
 <br>
