@@ -35,7 +35,7 @@ public class ExampleInstrumentedTest {
         assertEquals("in.urveshtanna.omdb", appContext.getPackageName());
 
 
-        onView(withId(R.id.hint_to_search)).check(matches(withText("Error")));
+        onView(withId(R.id.hint_to_search)).check(matches(withText(R.string.search_for_a_movie_or_tv_series)));
 
 
     }
