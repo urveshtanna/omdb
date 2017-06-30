@@ -14,7 +14,7 @@ machine:
 
 dependencies:
   override:
-    - chmod +x gradlew
+    - chmod +x ./gradlew
     - ./gradlew dependencies
 
 test:
