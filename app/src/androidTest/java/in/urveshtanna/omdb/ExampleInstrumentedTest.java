@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("in.urveshtanna.omdb", appContext.getPackageName());
+        assertEquals("xyz", appContext.getPackageName());
     }
 }
