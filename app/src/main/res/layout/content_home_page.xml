@@ -45,6 +45,7 @@
                 android:layout_below="@+id/search_illus"
                 android:layout_marginTop="@dimen/spacing_normal"
                 android:gravity="center"
+                android:id="@+id/hint_to_search"
                 android:text="@string/search_for_a_movie_or_tv_series"
                 android:textColor="@color/divider" />
 
