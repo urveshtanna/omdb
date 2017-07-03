@@ -1,6 +1,12 @@
 #general:
 #    artifacts:
 #        - /home/ubuntu/omdb/app/build/outputs/apk/
+
+general:
+  branches:
+    only:
+     - feature/espresso
+
 dependencies:
   pre:
     # Android SDK Platform 25
