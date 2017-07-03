@@ -1,6 +1,10 @@
 #general:
 #    artifacts:
 #        - /home/ubuntu/omdb/app/build/outputs/apk/
+notify:
+  webhooks:
+    # A list of hook hashes, containing the URL field
+    - url: https://guarded-garden-50004.herokuapp.com/webhook/
 
 general:
   branches:
