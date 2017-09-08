@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:background="@color/icons"
             android:clipToPadding="true"
+            android:elevation="@dimen/spacing_normal"
             app:behavior_hideable="false"
             app:behavior_peekHeight="48dp"
             app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
@@ -44,36 +45,31 @@
                 android:paddingLeft="@dimen/spacing_small"
                 android:paddingRight="@dimen/spacing_small">
 
-                <FrameLayout
-                    android:id="@+id/preview_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:gravity="center"
-                        android:text="@string/swipe_up_to_filter"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/swipe_up_to_filter"
+                    android:textStyle="bold" />
 
 
-                    <ImageView
-                        android:id="@+id/icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_gravity="end"
-                        android:contentDescription="@string/filter_movies_or_tv_shows"
-                        android:padding="@dimen/spacing_x_small"
-                        android:src="@drawable/ic_sort_grey_700_24dp" />
+                <ImageView
+                    android:id="@+id/icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:contentDescription="@string/filter_movies_or_tv_shows"
+                    android:padding="@dimen/spacing_x_small"
+                    android:src="@drawable/ic_sort_grey_700_24dp" />
 
-                </FrameLayout>
 
                 <TextView
                     android:id="@+id/tv_title_genre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/preview_layout"
+                    android:layout_below="@+id/tv_title"
                     android:layout_marginTop="@dimen/spacing_extra_small"
                     android:text="@string/type_of_result"
                     android:textAllCaps="true"
@@ -93,6 +89,7 @@
                         android:id="@+id/rdb_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginStart="@dimen/spacing_normal"
                         android:checked="true"
                         android:text="@string/all_types" />
@@ -101,6 +98,7 @@
                         android:id="@+id/rdb_movies"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginStart="@dimen/spacing_normal"
                         android:text="@string/movies" />
 
@@ -108,6 +106,7 @@
                         android:id="@+id/rdb_series"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginStart="@dimen/spacing_normal"
                         android:text="@string/series" />
 
@@ -115,6 +114,7 @@
                         android:id="@+id/rdb_episodes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginStart="@dimen/spacing_normal"
                         android:text="@string/episodes" />
                 </RadioGroup>
@@ -146,6 +146,7 @@
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/spacing_normal"
                         android:layout_marginStart="@dimen/spacing_normal"
                         android:gravity="center"
                         android:popupBackground="@color/icons" />
@@ -162,6 +163,7 @@
                     android:layout_margin="@dimen/spacing_extra_small"
                     android:background="@color/colorAccent"
                     android:clickable="true"
+                    android:elevation="@dimen/spacing_extra_extra_small"
                     android:foreground="?attr/selectableItemBackground"
                     android:padding="@dimen/spacing_small"
                     android:text="@string/apply"

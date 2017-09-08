@@ -11,21 +11,22 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import in.urveshtanna.omdb.R;
+import in.urveshtanna.omdb.screens.home.list.HomePageAdapter;
 
 /**
  * @author urveshtanna
  * @version 1.0
- * @see in.urveshtanna.omdb.adapters.HomePageAdapter
+ * @see HomePageAdapter
  * @since 1.0
  */
 
 public class CustomChromeTab extends AppCompatActivity {
 
-    final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
-    CustomTabsClient mCustomTabsClient;
-    CustomTabsSession mCustomTabsSession;
-    CustomTabsServiceConnection mCustomTabsServiceConnection;
-    CustomTabsIntent mCustomTabsIntent;
+    private final String CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome";
+    private CustomTabsClient mCustomTabsClient;
+    private CustomTabsSession mCustomTabsSession;
+    private CustomTabsServiceConnection mCustomTabsServiceConnection;
+    private CustomTabsIntent mCustomTabsIntent;
     private String url = null;
 
     @Override

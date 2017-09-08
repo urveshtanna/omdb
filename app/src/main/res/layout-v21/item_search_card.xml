@@ -40,7 +40,9 @@
 
                 <ImageView
                     android:id="@+id/img_poster"
+                    android:transitionName="@string/img_poster_transition"
                     android:layout_width="100dp"
+                    android:layout_marginRight="@dimen/spacing_small"
                     android:layout_marginEnd="@dimen/spacing_small"
                     android:layout_height="120dp"
                     android:contentDescription="@string/poster"
@@ -50,7 +52,7 @@
                     android:id="@+id/tv_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/img_poster"
+                    android:layout_toRightOf="@+id/img_poster"
                     android:text="@{model.title}"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif"
@@ -62,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_title"
                     android:layout_marginTop="2dp"
-                    android:layout_toEndOf="@+id/img_poster"
+                    android:layout_toRightOf="@+id/img_poster"
                     android:text="@{model.year}"
                     android:id="@+id/tv_year"
                     android:fontFamily="sans-serif"
@@ -82,7 +84,7 @@
                     android:textSize="@dimen/font_x_small"
                     android:background="@drawable/background_result_type"
                     android:layout_marginTop="@dimen/spacing_small"
-                    android:layout_toEndOf="@+id/img_poster"/>
+                    android:layout_toRightOf="@+id/img_poster"/>
 
                 <Button
                     android:id="@+id/btn_show_details"
@@ -102,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/img_poster"
                     style="@style/Base.Widget.AppCompat.Button.Borderless"
-                    android:layout_toEndOf="@+id/img_poster"
+                    android:layout_toLeftOf="@+id/btn_show_details"
                     android:text="@string/show_on_imdb"
                     android:clickable="true"
                     android:id="@+id/btn_imdb"

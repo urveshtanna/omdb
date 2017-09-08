@@ -34,4 +34,7 @@
     <string name="director">Director</string>
     <string name="production">Production</string>
     <string name="awards">Awards</string>
+    <string name="movie_or_tv_show_s_poster">Movie or TV show\'s poster</string>
+    <string name="filter_movies_or_tv_shows">Filter movies or TV shows</string>
+    <string name="apply">Apply</string>
 </resources>

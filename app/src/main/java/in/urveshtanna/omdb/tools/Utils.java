@@ -6,7 +6,8 @@ import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
 
 import in.urveshtanna.omdb.R;
-import in.urveshtanna.omdb.entities.ErrorModel;
+import in.urveshtanna.omdb.models.ErrorModel;
+import io.reactivex.Observable;
 
 /**
  * Useful/Helper methods
@@ -80,6 +81,11 @@ public class Utils {
                 = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return (activeNetworkInfo != null && activeNetworkInfo.isConnected());
+    }
+
+
+    public static Observable<Boolean> isNetworkAvailableObservable(Context context) {
+        return Observable.just(isNetworkAvailable(context));
     }
 
 
