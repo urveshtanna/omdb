@@ -52,7 +52,7 @@ public class MovieDetailView {
         binding.include.content.setVisibility(View.GONE);
     }
 
-    private void hideLoadingView() {
+    void hideLoadingView() {
         binding.progressBar.setVisibility(View.GONE);
         binding.appBar.setVisibility(View.VISIBLE);
         binding.include.content.setVisibility(View.VISIBLE);
@@ -106,5 +106,9 @@ public class MovieDetailView {
 
     public boolean isDataFetched() {
         return isDataFetched;
+    }
+
+    public MovieDetailActivity getActivity() {
+        return movieDetailActivity;
     }
 }

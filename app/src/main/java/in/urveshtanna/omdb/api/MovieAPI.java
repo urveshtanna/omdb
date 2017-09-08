@@ -14,13 +14,13 @@ import retrofit2.http.Query;
 
 public interface MovieAPI {
 
-    @GET("/?apikey=BanMePlz&")
+    @GET("/")
     Observable<SearchPayloadModel> getList(@Query(JsonKeys.QUERY_TO_SEARCH) String searchKey,
                                            @Query(JsonKeys.QUERY_TYPE_OF_RESULT) String type,
                                            @Query(JsonKeys.QUERY_YEAR_OF_RELEASE) String yearOfRelease,
                                            @Query(JsonKeys.QUERY_PAGE) int page);
 
-    @GET("/?apikey=BanMePlz&")
+    @GET("/")
     Observable<MovieModel> getMovieFromName(@Query(JsonKeys.QUERY_TITLE) String title,
                                             @Query(JsonKeys.QUERY_PLOT) String plot);
 

@@ -1,9 +1,12 @@
 package in.urveshtanna.omdb.screens.home.core;
 
 import in.urveshtanna.omdb.screens.home.HomePageActivity;
+import in.urveshtanna.omdb.tools.HelperClass;
+import in.urveshtanna.omdb.tools.RetrofitException;
 import in.urveshtanna.omdb.tools.rx.RxSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 
 /**
@@ -40,12 +43,36 @@ public class HomePresenter {
                 .flatMap(isAvailable -> model.getMovies(name, typeOf, yearOfRelease, page))
                 .subscribeOn(schedulers.internet())
                 .observeOn(schedulers.androidThread())
-                .subscribe(searchPayloadModel -> homePageView.setSearchView(searchPayloadModel), throwable -> {
-                    homePageView.hideLoadingView();
+                .subscribe(searchPayloadModel -> homePageView.setSearchView(searchPayloadModel), new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        RetrofitException error = (RetrofitException) throwable;
+                        if (error.getResponse().code() == 401) {
+                            homePageView.hideLoadingView();
+                            HelperClass.showDialogMessage(homePageView.getActivity(), "Unauthorized", error.getMessage(), "Exit", null, null, false, new HelperClass.OnDialogClickListener() {
+                                @Override
+                                public void onPositiveClick() {
+                                    homePageView.getActivity().finish();
+                                }
+
+                                @Override
+                                public void onNegativeClick() {
+
+                                }
+
+                                @Override
+                                public void onNeutralClick() {
+
+                                }
+                            });
+                        } else {
+                            HelperClass.showDialogMessage(homePageView.getActivity(), null, error.getMessage(), "Exit", null, null, true, null);
+                        }
+                    }
                 });
     }
 
-    public void onDestroy(){
+    public void onDestroy() {
         compositeDisposable.clear();
     }
 

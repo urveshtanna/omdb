@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,5 +52,40 @@ public class HelperClass {
             clipboard.setPrimaryClip(clip);
             HelperClass.showToastBar(context, toastMessage);
         }
+    }
+
+    public static void showDialogMessage(Context context, String title, String message, String positiveText, String neutralText, String negativeText, boolean isCancelable, OnDialogClickListener onDialogClickListener) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setCancelable(isCancelable);
+
+        if (positiveText != null)
+            builder.setPositiveButton(positiveText, (dialog, which) -> {
+                if (onDialogClickListener != null)
+                    onDialogClickListener.onPositiveClick();
+            });
+        if (negativeText != null)
+            builder.setNegativeButton(negativeText, ((dialog, which) -> {
+                if (onDialogClickListener != null)
+                    onDialogClickListener.onNegativeClick();
+            }));
+
+        if (neutralText != null)
+            builder.setNeutralButton(neutralText, ((dialog, which) -> {
+                if (onDialogClickListener != null)
+                    onDialogClickListener.onNeutralClick();
+            }));
+
+        builder.create().show();
+    }
+
+    public interface OnDialogClickListener {
+
+        void onPositiveClick();
+
+        void onNegativeClick();
+
+        void onNeutralClick();
     }
 }

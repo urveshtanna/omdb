@@ -46,6 +46,8 @@ public class HomePageActivity extends AppCompatActivity {
         homePageView.setPresenter(homePresenter);
         homePageView.setUpFilterBottomSheet();
         homePageView.initializePager();
+
+
     }
 
     @Override

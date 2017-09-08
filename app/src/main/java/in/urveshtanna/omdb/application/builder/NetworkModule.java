@@ -2,15 +2,15 @@ package in.urveshtanna.omdb.application.builder;
 
 import android.content.Context;
 
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-
 import java.io.File;
 
 import dagger.Module;
 import dagger.Provides;
+import in.urveshtanna.omdb.tools.RxErrorHandlingCallAdapterFactory;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.CallAdapter;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -53,8 +53,8 @@ class NetworkModule {
 
     @AppScope
     @Provides
-    RxJava2CallAdapterFactory provideRxAdapter() {
-        return RxJava2CallAdapterFactory.create();
+    CallAdapter.Factory provideRxAdapter() {
+        return RxErrorHandlingCallAdapterFactory.create();
     }
 
 

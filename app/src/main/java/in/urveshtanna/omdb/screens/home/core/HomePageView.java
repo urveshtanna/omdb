@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.urveshtanna.omdb.R;
-import in.urveshtanna.omdb.screens.home.list.HomePageAdapter;
 import in.urveshtanna.omdb.databinding.ActivityHomePageBinding;
 import in.urveshtanna.omdb.models.MovieModel;
 import in.urveshtanna.omdb.models.SearchPayloadModel;
 import in.urveshtanna.omdb.screens.home.HomePageActivity;
+import in.urveshtanna.omdb.screens.home.list.HomePageAdapter;
 import in.urveshtanna.omdb.tools.HelperClass;
 import in.urveshtanna.omdb.tools.ViewUtils;
 
@@ -43,10 +43,12 @@ public class HomePageView {
     private List<MovieModel> searchList = new ArrayList<>();
     private String queryToFind = null;
     private HomePresenter homePresenter;
+    private HomePageActivity activity;
 
 
     public HomePageView(HomePageActivity activity) {
         binding = DataBindingUtil.setContentView(activity, R.layout.activity_home_page);
+        this.activity = activity;
         activity.setSupportActionBar(binding.include.toolbar);
         binding.include.toolbar.setNavigationOnClickListener(v -> activity.onBackPressed());
     }
@@ -312,5 +314,9 @@ public class HomePageView {
 
     public void setPresenter(HomePresenter homePresenter) {
         this.homePresenter = homePresenter;
+    }
+
+    public HomePageActivity getActivity() {
+        return activity;
     }
 }

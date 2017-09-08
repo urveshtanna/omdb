@@ -1,9 +1,10 @@
 package in.urveshtanna.omdb.screens.movieDetails.core;
 
+import in.urveshtanna.omdb.tools.HelperClass;
+import in.urveshtanna.omdb.tools.RetrofitException;
 import in.urveshtanna.omdb.tools.rx.RxSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import timber.log.Timber;
 
 /**
  * Adapter used to search product with pricing and navigate to product details
@@ -46,7 +47,29 @@ public class MovieDetailPresenter {
                 .flatMap(isAvailable -> model.getMovieFromName(title))
                 .subscribeOn(rxSchedulers.internet())
                 .observeOn(rxSchedulers.androidThread())
-                .subscribe(movieModel -> movieDetailView.setMovieModel(movieModel),
-                        Timber::e);
+                .subscribe(movieModel -> movieDetailView.setMovieModel(movieModel), throwable -> {
+                    RetrofitException error = (RetrofitException) throwable;
+                    movieDetailView.hideLoadingView();
+                    if (error.getResponse().code() == 401) {
+                        HelperClass.showDialogMessage(movieDetailView.getActivity(), "Unauthorized", error.getMessage(), "Exit", null, null, false, new HelperClass.OnDialogClickListener() {
+                            @Override
+                            public void onPositiveClick() {
+                                movieDetailView.getActivity().finish();
+                            }
+
+                            @Override
+                            public void onNegativeClick() {
+
+                            }
+
+                            @Override
+                            public void onNeutralClick() {
+
+                            }
+                        });
+                    } else {
+                        HelperClass.showDialogMessage(movieDetailView.getActivity(), null, error.getMessage(), "Exit", null, null, true, null);
+                    }
+                });
     }
 }
