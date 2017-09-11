@@ -41,7 +41,7 @@ public class MovieDetailPresenter {
     public Disposable getDetailsFromTitle(String title) {
         return model.isNetworkAvailable().doOnNext(isInternetAvailable -> {
             if (!isInternetAvailable) {
-
+                HelperClass.showMessage(movieDetailView.getActivity(), "Please check your internet connection");
             }
         }).filter(filterNetwork -> true)
                 .flatMap(isAvailable -> model.getMovieFromName(title))
@@ -50,7 +50,7 @@ public class MovieDetailPresenter {
                 .subscribe(movieModel -> movieDetailView.setMovieModel(movieModel), throwable -> {
                     RetrofitException error = (RetrofitException) throwable;
                     movieDetailView.hideLoadingView();
-                    if (error.getResponse().code() == 401) {
+                    if (error.getResponse() != null && error.getResponse().code() == 401) {
                         HelperClass.showDialogMessage(movieDetailView.getActivity(), "Unauthorized", error.getMessage(), "Exit", null, null, false, new HelperClass.OnDialogClickListener() {
                             @Override
                             public void onPositiveClick() {
@@ -68,7 +68,23 @@ public class MovieDetailPresenter {
                             }
                         });
                     } else {
-                        HelperClass.showDialogMessage(movieDetailView.getActivity(), null, error.getMessage(), "Exit", null, null, true, null);
+                        movieDetailView.hideLoadingView();
+                        HelperClass.showDialogMessage(movieDetailView.getActivity(), null, error.getMessage(), "Retry", null, null, true, new HelperClass.OnDialogClickListener() {
+                            @Override
+                            public void onPositiveClick() {
+                                onCreate(title);
+                            }
+
+                            @Override
+                            public void onNegativeClick() {
+
+                            }
+
+                            @Override
+                            public void onNeutralClick() {
+
+                            }
+                        });
                     }
                 });
     }

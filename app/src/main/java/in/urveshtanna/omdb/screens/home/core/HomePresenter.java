@@ -6,7 +6,6 @@ import in.urveshtanna.omdb.tools.RetrofitException;
 import in.urveshtanna.omdb.tools.rx.RxSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 
 /**
@@ -37,37 +36,50 @@ public class HomePresenter {
     private Disposable searchForMovieWithName(String name, String typeOf, String yearOfRelease, int page) {
         return model.isNetworkAvailable().doOnNext(isInternetAvailable -> {
             if (!isInternetAvailable) {
-
+                HelperClass.showMessage(homePageView.getActivity(), "Please check your internet connection");
             }
         }).filter(filterNetwork -> true)
                 .flatMap(isAvailable -> model.getMovies(name, typeOf, yearOfRelease, page))
                 .subscribeOn(schedulers.internet())
                 .observeOn(schedulers.androidThread())
-                .subscribe(searchPayloadModel -> homePageView.setSearchView(searchPayloadModel), new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        RetrofitException error = (RetrofitException) throwable;
-                        if (error.getResponse().code() == 401) {
-                            homePageView.hideLoadingView();
-                            HelperClass.showDialogMessage(homePageView.getActivity(), "Unauthorized", error.getMessage(), "Exit", null, null, false, new HelperClass.OnDialogClickListener() {
-                                @Override
-                                public void onPositiveClick() {
-                                    homePageView.getActivity().finish();
-                                }
+                .subscribe(searchPayloadModel -> homePageView.setSearchView(searchPayloadModel), throwable -> {
+                    RetrofitException error = (RetrofitException) throwable;
+                    if (error.getResponse() != null && error.getResponse().code() == 401) {
+                        homePageView.hideLoadingView();
+                        HelperClass.showDialogMessage(homePageView.getActivity(), "Unauthorized", error.getMessage(), "Exit", null, null, false, new HelperClass.OnDialogClickListener() {
+                            @Override
+                            public void onPositiveClick() {
+                                homePageView.getActivity().finish();
+                            }
 
-                                @Override
-                                public void onNegativeClick() {
+                            @Override
+                            public void onNegativeClick() {
 
-                                }
+                            }
 
-                                @Override
-                                public void onNeutralClick() {
+                            @Override
+                            public void onNeutralClick() {
 
-                                }
-                            });
-                        } else {
-                            HelperClass.showDialogMessage(homePageView.getActivity(), null, error.getMessage(), "Exit", null, null, true, null);
-                        }
+                            }
+                        });
+                    } else {
+                        homePageView.hideLoadingView();
+                        HelperClass.showDialogMessage(homePageView.getActivity(), null, error.getMessage(), "Retry", null, null, true, new HelperClass.OnDialogClickListener() {
+                            @Override
+                            public void onPositiveClick() {
+                                onCreate(name, typeOf, yearOfRelease, page);
+                            }
+
+                            @Override
+                            public void onNegativeClick() {
+
+                            }
+
+                            @Override
+                            public void onNeutralClick() {
+
+                            }
+                        });
                     }
                 });
     }
